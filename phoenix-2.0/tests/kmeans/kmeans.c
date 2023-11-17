@@ -452,6 +452,8 @@ int main(int argc, char **argv)
         inter_library_time += time_diff (&end, &begin);
 #endif
         first_run = false;
+        // only run once
+        modified = false;
     }  
 
 #ifdef TIMING

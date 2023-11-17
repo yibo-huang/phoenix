@@ -333,20 +333,20 @@ int main(int argc, char *argv[])
 
     printf("Wordcount: MapReduce Completed\n");
 
-    printf("Wordcount: Calling MapReduce Scheduler Sort\n");
+    // printf("Wordcount: Calling MapReduce Scheduler Sort\n");
 
-    mapreduce_sort(wc_vals.data, wc_vals.length, sizeof(keyval_t), mykeyvalcmp);
+    // mapreduce_sort(wc_vals.data, wc_vals.length, sizeof(keyval_t), mykeyvalcmp);
 
-    CHECK_ERROR (map_reduce_finalize ());
+    // CHECK_ERROR (map_reduce_finalize ());
 
-    printf("Wordcount: MapReduce Completed\n");
+    // printf("Wordcount: MapReduce Completed\n");
 
-    dprintf("\nWordcount: Results (TOP %d):\n", disp_num);
-    for (i = 0; i < disp_num && i < wc_vals.length; i++)
-    {
-      keyval_t * curr = &((keyval_t *)wc_vals.data)[i];
-      dprintf("%15s - %" PRIdPTR "\n", (char *)curr->key, (intptr_t)curr->val);
-    }
+    // dprintf("\nWordcount: Results (TOP %d):\n", disp_num);
+    // for (i = 0; i < disp_num && i < wc_vals.length; i++)
+    // {
+    //   keyval_t * curr = &((keyval_t *)wc_vals.data)[i];
+    //   dprintf("%15s - %" PRIdPTR "\n", (char *)curr->key, (intptr_t)curr->val);
+    // }
 
     free(wc_vals.data);
 

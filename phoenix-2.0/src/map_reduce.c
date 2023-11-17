@@ -294,6 +294,7 @@ map_reduce (map_reduce_args_t * args)
     map (env);
     get_time (&end);
 
+    unsigned int map_reduce_time = time_diff (&end, &begin);
 #ifdef TIMING
     fprintf (stderr, "map phase: %u\n", time_diff (&end, &begin));
 #endif
@@ -305,6 +306,8 @@ map_reduce (map_reduce_args_t * args)
     reduce (env);
     get_time (&end);
 
+    map_reduce_time += time_diff (&end, &begin);
+    printf("[TIME] %lf\n", (double)map_reduce_time / 1000000.0);
 #ifdef TIMING
     fprintf (stderr, "reduce phase: %u\n", time_diff (&end, &begin));
 #endif

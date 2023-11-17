@@ -33,7 +33,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-//#define TIMING
+#define TIMING
 
 /* Debug printf */
 #define dprintf(...) fprintf(stdout, __VA_ARGS__)

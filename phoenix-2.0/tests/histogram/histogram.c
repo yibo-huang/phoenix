@@ -257,8 +257,8 @@ int main(int argc, char *argv[]) {
         swap_bytes((char *)(data_pos), sizeof(*data_pos));
     }
     
-    int imgdata_bytes = (int)finfo.st_size - (int)(*(data_pos));
-    printf("This file has %d bytes of image data, %d pixels\n", imgdata_bytes,
+    uint64_t imgdata_bytes = (uint64_t)finfo.st_size - (uint64_t)(*(data_pos));
+    printf("This file has %ld bytes of image data, %ld pixels\n", imgdata_bytes,
                                                                                 imgdata_bytes / 3);
     
     // We use this global variable arrays to store the "key" for each histogram
