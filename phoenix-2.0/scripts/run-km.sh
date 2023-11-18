@@ -25,5 +25,5 @@ do
 done
 
 scp -P 10022 root@localhost:~/$output_file $tmp_file >> /dev/null
-grep "\[TIME\]" $tmp_file | awk '{ total += $2 } END { print "[TIME]" total/NR }'
+grep "\[TIME\]" $tmp_file | awk '{ total += $2 } END { print "[TIME] " total/NR }'
 # ssh_command "grep -P '(TIME|LOOP)' $output_file"
