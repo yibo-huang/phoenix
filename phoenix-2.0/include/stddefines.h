@@ -35,6 +35,7 @@
 
 #define TIMING 1
 #define NO_MMAP 1
+// #define fprintf(...) do{ } while ( 0 )
 
 /* Debug printf */
 #define dprintf(...) fprintf(stdout, __VA_ARGS__)

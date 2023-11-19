@@ -231,8 +231,20 @@ int main(int argc, char *argv[]) {
     fdata = (char *)malloc (finfo.st_size);
     CHECK_ERROR (fdata == NULL);
 
-    ret = read (fd, fdata, finfo.st_size);
-    CHECK_ERROR (ret != finfo.st_size);
+    // read does not support reading 4GB file
+    uint64_t remaining_size = finfo.st_size;
+    uint64_t current_offset = 0;
+    ret = -1;
+    while (ret != 0) {
+        ret = read(fd, fdata + current_offset, remaining_size);
+        if (ret == -1) {
+            perror("read:");
+            exit(-1);
+        }
+        remaining_size -= ret;
+        current_offset += ret;
+        printf("read %ld bytes\n", ret);
+    }
 #endif
 
     if ((fdata[0] != 'B') || (fdata[1] != 'M')) {
