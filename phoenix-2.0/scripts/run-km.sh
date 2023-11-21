@@ -21,7 +21,7 @@ ssh_command "test -e $output_file && rm -rf $output_file"
 for (( i=0; i < $loop_times; ++i ))
 do
     echo "Loop $i..."
-	ssh_command "MR_NUMPROCS=$cores $executable -d 8 -c 2048 -p 5000000 -s 40 >> $output_file 2> error.txt"
+	ssh_command "LD_PRELOAD=/root/libmimalloc.so MR_NUMPROCS=$cores $executable -d 8 -c 2048 -p 5000000 -s 40 >> $output_file 2> error.txt"
 done
 
 scp -P 10022 root@localhost:~/$output_file $tmp_file >> /dev/null
