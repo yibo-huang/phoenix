@@ -22,7 +22,7 @@ ssh_command "test -e $output_file && rm -rf $output_file"
 for (( i=0; i < $loop_times; ++i ))
 do
     echo "Loop $i..."
-	ssh_command "LD_PRELOAD=$malloc MR_NUMPROCS=$cores $executable 2000 2 >> $output_file 2> error.txt"
+	ssh_command "LD_PRELOAD=$malloc MR_NUMPROCS=$cores $executable 3000 2 >> $output_file 2> error.txt"
 done
 
 scp -P 10022 root@localhost:~/$output_file $tmp_file >> /dev/null
