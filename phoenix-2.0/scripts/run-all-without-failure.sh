@@ -16,7 +16,7 @@ function ssh_command {
 }
 
 function loop {
-        for cores in 1 2 4 8 16 32 64
+        for cores in 1 2 4 8 16 32
         do
                 echo Running with $cores cores
                 $@ $cores $loop_times
